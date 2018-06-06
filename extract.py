@@ -2,6 +2,7 @@ import re, string, unicodedata
 import nltk
 import contractions
 import inflect
+import csv
 from bs4 import BeautifulSoup
 from nltk import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords
@@ -17,7 +18,7 @@ from nltk.tokenize import word_tokenize
 
 from tqdm import tqdm
 stopwords=set(stopwords.words('english'))
-data=pd.read_csv('csv/github_issues_sampledv2.csv',usecols = ['issue_title','body'] , encoding='utf8')
+data=pd.read_csv('csv/github_issues_preproc1.csv',usecols = ['issue_title','body'] , encoding='utf8')
 df = pd.DataFrame(data,columns=['issue_title','body'])
 rem=0
 
@@ -30,10 +31,29 @@ k=0
 #checks for filtered rows.
 def check_atl2(t , b):
  check=0
- if len(list(set(t).intersection(b)))>2:
+ if len(list(set(t).intersection(b)))>1:
   check=1
   return check 
  return check
+ 
+def filter_rows(s):
+ #print s	
+ r=0
+ data=[]
+ with open('csv/github_issues_preproc1.csv', 'rb') as f,open('csv/preproc1f.csv', 'wb') as f_out:
+  reader = csv.reader(f)
+  writer = csv.writer(f_out)
+  for row in reader:
+    r=r+1
+    if r==s:
+     #print row
+     data.append(row)	
+     print data[0]
+     for new_row in data:
+      #print new_row[1]	
+      writer.writerow(new_row)
+      #print new_row
+     #print "1 row written" 
  
 for i , row in df.iterrows():
  title=data['issue_title'][i]
@@ -60,8 +80,9 @@ for i , row in df.iterrows():
  
  
  if check_atl2(title_fil , body_fil)==1:
-  k=k+1  
- 		
+  k=k+1
+  filter_rows(i+2) 
+
 print "total:"
 print k
 #print rem
