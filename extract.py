@@ -17,7 +17,7 @@ from nltk.tokenize import word_tokenize
 
 from tqdm import tqdm
 stopwords=set(stopwords.words('english'))
-data=pd.read_csv('csv/github_issues_sampledv3.csv',usecols = ['issue_title','body'] , encoding='utf8')
+data=pd.read_csv('csv/github_issues_sampledv4.csv',usecols = ['issue_title','body'] , encoding='utf8')
 df = pd.DataFrame(data,columns=['issue_title','body'])
 rem=0
 
@@ -34,13 +34,32 @@ def check_common(t,b):
     return result 
  return result
 
+k=0
+
 def check_atl2(t , b):
-	print list(set(t).intersection(b))
+ #if len(list(set(t).intersection(b)))>=1:
+ check=0
+ #print "original:"
+ #print list(set(t).intersection(b))
+ if len(list(set(t).intersection(b)))>1:
+  check=1
+  #print "filtered"
+  #print list(set(t).intersection(b))
+  #print "check"
+  #print check
+  return check 
+ #print "check fail"
+ #print check
+ return check
+ #else:
+ 	#return False
+  
 
 
 for i , row in df.iterrows():
  title=data['issue_title'][i]
  body=data['body'][i]
+ print i
  title_tokens=word_tokenize(title)
  body_tokens=word_tokenize(body)
  title_fil=[w for w in title_tokens if not w in stopwords]
@@ -61,11 +80,14 @@ for i , row in df.iterrows():
  
  if check_common(title_fil , body_fil) == False:
   rem=rem+1
- check_atl2(title_fil , body_fil)  
-  		
+ if check_atl2(title_fil , body_fil)==1:
+  k=k+1  
+ 		
 
 
 
 
 print "total:"
-print rem
+print k
+#print rem
+print df.shape
