@@ -8,12 +8,9 @@ from nltk import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import LancasterStemmer, WordNetLemmatizer
 import pandas as pd
-from sklearn.feature_extraction.text import CountVectorizer
-import enchant
 import collections
-import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
+import itertools
+
 
 
 from tqdm import tqdm
@@ -21,12 +18,14 @@ stopwords=set(stopwords.words('english'))
 data=pd.read_csv('csv/github_issues_preproc1.csv',usecols = ['issue_title','body'] , encoding='utf8')
 df = pd.DataFrame(data,columns=['issue_title','body'])
 rem=0
-
+k=0
 #replace contractions like can't to cannot.
 def replace_cont(text):
  return contractions.fix(text)
 
-k=0
+#def replace_lem(text):
+
+
 
 #checks for filtered rows.
 def check_atl2(t , b):
@@ -37,24 +36,18 @@ def check_atl2(t , b):
  return check
  
 def filter_rows(s):
- #print s	
  r=0
  data=[]
- with open('csv/github_issues_preproc1.csv', 'rb') as f,open('csv/preproc1f.csv', 'wb') as f_out:
+ with open('csv/github_issues_preproc1.csv',  'rb') as f,open('csv/preproc1f.csv',  'a') as f_out:
   reader = csv.reader(f)
   writer = csv.writer(f_out)
   for row in reader:
-    r=r+1
-    if r==s:
-     #print row
-     data.append(row)	
-     print data[0]
-     for new_row in data:
-      #print new_row[1]	
-      writer.writerow(new_row)
-      #print new_row
-     #print "1 row written" 
- 
+   r=r+1
+   if r==s:
+    data.append(row)
+    print data[0][1]	
+  writer.writerows(data) 
+     
 for i , row in df.iterrows():
  title=data['issue_title'][i]
  body=data['body'][i]
