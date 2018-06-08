@@ -15,7 +15,7 @@ import itertools
 
 from tqdm import tqdm
 stopwords=set(stopwords.words('english'))
-data=pd.read_csv('csv/github_issues_preproc1.csv',usecols = ['issue_title','body'] , encoding='utf8')
+data=pd.read_csv('csv/github_issues_preprocvt2.csv',usecols = ['issue_title','body'] , encoding='utf8')
 df = pd.DataFrame(data,columns=['issue_title','body'])
 rem=0
 k=0
@@ -30,7 +30,7 @@ def replace_cont(text):
 #checks for filtered rows.
 def check_atl2(t , b):
  check=0
- if len(list(set(t).intersection(b)))>1:
+ if len(list(set(t).intersection(b)))>2:
   check=1
   return check 
  return check
@@ -38,14 +38,14 @@ def check_atl2(t , b):
 def filter_rows(s):
  r=0
  data=[]
- with open('csv/github_issues_preproc1.csv',  'rb') as f,open('csv/preproc1f.csv',  'a') as f_out:
+ with open('csv/github_issues_sampledv3.csv',  'rb') as f,open('csv/preprocv2f.csv',  'a') as f_out:
   reader = csv.reader(f)
   writer = csv.writer(f_out)
   for row in reader:
    r=r+1
    if r==s:
     data.append(row)
-    print data[0][1]	
+    	
   writer.writerows(data) 
      
 for i , row in df.iterrows():

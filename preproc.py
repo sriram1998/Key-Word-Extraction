@@ -15,7 +15,7 @@ from nltk.stem import LancasterStemmer, WordNetLemmatizer
 
 
 #reading the csv file and creating dataframe.
-data=pd.read_csv('csv/github_issues_sampledv2.csv',usecols = ['issue_title','body'] , encoding='utf8')
+data=pd.read_csv('csv/preprocv2f.csv',usecols = ['issue_title','body'] , encoding='utf8')
 df = pd.DataFrame(data,columns=['issue_title','body'])
 
 
@@ -23,6 +23,9 @@ df = pd.DataFrame(data,columns=['issue_title','body'])
 def strip_html(text):
  soup=	BeautifulSoup(text , "html.parser")
  return soup.get_text() 
+def sub_num(text):
+ sub=re.sub(r"\b\d+\b" , "< NUMBER >" , text)
+ return sub
 def sub_path(text):
  sub=re.sub(r"(?:/[^/-]+)+?/\w+\.\w+" , "< PATH >" , text)
  return sub
@@ -42,12 +45,14 @@ def rem_punc(text):
 for i , row in df.iterrows():
  s=data['body'][i]
  s=strip_html(s)
+ s=sub_num(s)
  s=sub_path(s)
  s=sub_url(s)
  s=sub_alphanum(s)
  s=rem_punc(s)
  st=data['issue_title'][i]
  st=strip_html(st)
+ st=sub_num(st)
  st=sub_path(st)
  st=sub_url(st)
  st=sub_alphanum(st)
@@ -58,7 +63,7 @@ for i , row in df.iterrows():
  
 
 #writing to new csv file
-df.to_csv('csv/github_issues_preprocvt2.csv' , encoding='utf-8' , index=False)
+df.to_csv('csv/preprocv2fnew.csv' , encoding='utf-8' , index=False)
 
 
 

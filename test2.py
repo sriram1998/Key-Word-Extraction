@@ -13,11 +13,8 @@ import collections
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+import re
+from collections import Counter
+from autocorrect import spell
 
-
-from tqdm import tqdm
-def replace_cont(text):
- return contractions.fix(text)
-
-w=replace_cont("cia won't save")
-print w
+print spell("proto_version")
