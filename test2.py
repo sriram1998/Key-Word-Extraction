@@ -20,49 +20,40 @@ from collections import Counter
 import math
 from textblob import TextBlob as tb
 
-def tf(word, blob):
- return (float)(blob.words.count(word)) / (float)(len(blob.words))
+from collections import defaultdict
+import csv
+from sklearn.feature_extraction.text import TfidfVectorizer
+tf1 = TfidfVectorizer(analyzer='word', ngram_range=(0,1), min_df = 0, stop_words = 'english')
+tf2 = TfidfVectorizer(analyzer='word', ngram_range=(0,1), min_df = 0)
+tf3 = TfidfVectorizer(analyzer='word', ngram_range=(2,2), min_df = 0, stop_words = 'english')
+tf4 = TfidfVectorizer(analyzer='word', ngram_range=(2,2), min_df = 0)
 
+desc=defaultdict(list)
 
-def n_containing(word, bloblist):
- return (float)(sum(1 for blob in bloblist if word in blob))
+with open('csv/preproct1f.csv',  'r') as sentences_file:
+	reader=csv.reader(sentences_file , delimiter=",")
+	reader.next()
+	for row in reader:
+		desc[row[1]].append(row[2])
 
-def idf(word, bloblist):
- return math.log(len(bloblist) / (float)(1 + n_containing(word, bloblist)))
+for desc_id , text in desc.iteritems():
+	desc[desc_id]="".join(text)
+
+corpus=[]
+
+for id , desc in sorted(desc.iteritems()):
+	corpus.append(desc)
  
 
-def tfidf(word, blob, bloblist):
- return (float)((float)(tf(word, blob)) * (float)(idf(word, bloblist)))
+tfidf_matrix=tf4.fit_transform(corpus)
+feature_names=tf4.get_feature_names()
 
-document1 = tb("""Python is a 2000 made-for-TV horror movie directed by Richard
-Clabaugh. The film features several cult favorite actors, including William
-Zabka of The Karate Kid fame, Wil Wheaton, Casper Van Dien, Jenny McCarthy,
-Keith Coogan, Robert Englund (best known for his role as Freddy Krueger in the
-A Nightmare on Elm Street series of films), Dana Barron, David Bowe, and Sean
-Whalen. The film concerns a genetically engineered snake, a python, that
-escapes and unleashes itself on a small town. It includes the classic final
-girl scenario evident in films like Friday the 13th. It was filmed in Los Angeles,
- California and Malibu, California. Python was followed by two sequels: Python
- II (2002) and Boa vs. Python (2004), both also made-for-TV films.""")
+dense=tfidf_matrix.todense()
 
-document2 = tb("""Python, from the Greek word , is a genus of
-nonvenomous pythons[2] found in Africa and Asia. Currently, 7 species are
-recognised.[2] A member of this genus, P. reticulatus, is among the longest
-snakes known.""")
-
-document3 = tb("""The Colt Python is a .357 Magnum caliber revolver formerly
-manufactured by Colt's Manufacturing Company of Hartford, Connecticut.
-It is sometimes referred to as a "Combat Magnum".[1] It was first introduced
-in 1955, the same year as Smith & Wesson's M29 .44 Magnum. The now discontinued
-Colt Python targeted the premium revolver market segment. Some firearm
-collectors and writers such as Jeff Cooper, Ian V. Hogg, Chuck Hawks, Leroy
-Thompson, Renee Smeets and Martin Dougherty have described the Python as the
-finest production revolver ever made.""")
-
-bloblist = [document1, document2, document3]
-for i, blob in enumerate(bloblist):
-    print("Top words in document {}".format(i + 1))
-    scores = {word: tfidf(word, blob, bloblist) for word in blob.words}
-    sorted_words = sorted(scores.items(), key=lambda x: x[1], reverse=True)
-    for word, score in sorted_words[:3]:
-     print("Word: {}, TF-IDF: {}".format(word, round(score, 5)))
+#print sorted(dense[0].tolist(), key=lambda t: t[1] * -1)[:5]
+text1=dense[51].tolist()[0]
+phrase_scores = [pair for pair in zip(range(0, len(text1)), text1) if pair[1] > 0]
+print len(phrase_scores)
+a= sorted(phrase_scores, key=lambda t: t[1] * -1)[:5]	
+print feature_names[a[0][0]]
+print feature_names[a[1][0]]
