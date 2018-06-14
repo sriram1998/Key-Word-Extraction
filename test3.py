@@ -22,16 +22,29 @@ corpus=[]
 for id , desc in sorted(desc.iteritems()):
 	corpus.append(desc)
  
+def analysis(row , n , s):
+ if n==1 and s==1:
+  tfidf_matrix=tf1.fit_transform(corpus)
+  feature_names=tf1.get_feature_names()
+ if n==1 and s==0:
+  tfidf_matrix=tf2.fit_transform(corpus)
+  feature_names=tf2.get_feature_names()	
+ if n==2 and s==1:
+  tfidf_matrix=tf3.fit_transform(corpus)
+  feature_names=tf3.get_feature_names()
+ if n==2 and s==0:
+  tfidf_matrix=tf4.fit_transform(corpus)
+  feature_names=tf4.get_feature_names()
 
-tfidf_matrix=tf4.fit_transform(corpus)
-feature_names=tf4.get_feature_names()
+ dense=tfidf_matrix.todense()
 
-dense=tfidf_matrix.todense()
+ text1=dense[row].tolist()[0]
+ phrase_scores = [pair for pair in zip(range(0, len(text1)), text1) if pair[1] > 0]
 
-#print sorted(dense[0].tolist(), key=lambda t: t[1] * -1)[:5]
-text1=dense[51].tolist()[0]
-phrase_scores = [pair for pair in zip(range(0, len(text1)), text1) if pair[1] > 0]
-print len(phrase_scores)
-a= sorted(phrase_scores, key=lambda t: t[1] * -1)[:5]	
-print feature_names[a[0][0]]
-print feature_names[a[1][0]]
+ a= sorted(phrase_scores, key=lambda t: t[1] * -1)[:5]	
+ print feature_names[a[0][0]]
+ print feature_names[a[1][0]]
+
+
+
+analysis(51 , 1 , 1)
