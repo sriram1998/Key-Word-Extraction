@@ -11,8 +11,6 @@ import pandas as pd
 import collections
 import itertools
 
-
-
 from tqdm import tqdm
 stopwords=set(stopwords.words('english'))
 data=pd.read_csv('csv/github_issues_preprocvt2.csv',usecols = ['issue_title','body'] , encoding='utf8')

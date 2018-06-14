@@ -34,8 +34,10 @@ for i , row in df.iterrows():
  vectorizer2.fit(bodyv)
  vector2=vectorizer2.transform(bodyv)
 
-print vectorizer2.vocabulary_
+#print vectorizer2.vocabulary_
 print "count vectoriZer"
 print vector.shape
+print vector2.shape
 print "TfiDf"
-print(vector2.toarray())
+print vector
+print(vector2.todense())
