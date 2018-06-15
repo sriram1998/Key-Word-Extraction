@@ -15,7 +15,7 @@ from nltk.stem import LancasterStemmer, WordNetLemmatizer
 
 
 #reading the csv file and creating dataframe.
-data=pd.read_csv('csv/preprocv2f.csv',usecols = ['issue_title','body'] , encoding='utf8')
+data=pd.read_csv('csv/preproctestf.csv',usecols = ['issue_title','body'] , encoding='utf8')
 df = pd.DataFrame(data,columns=['issue_title','body'])
 
 
@@ -63,7 +63,7 @@ for i , row in df.iterrows():
  
 
 #writing to new csv file
-df.to_csv('csv/preprocv2fnew.csv' , encoding='utf-8' , index=False)
+df.to_csv('csv/preproctest2fnew.csv' , encoding='utf-8' , index=False)
 
 
 
