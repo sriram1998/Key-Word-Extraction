@@ -20,20 +20,30 @@ tf6 = TfidfVectorizer(analyzer='word', ngram_range=(3,3), min_df = 0)
 
 desc=defaultdict(list)
 
-with open('csv/test/github_issues_sampledtest.csv',  'r') as sentences_file:
+with open('csv/filtered/preproctest2fnew.csv',  'r') as sentences_file:
 	reader=csv.reader(sentences_file , delimiter=",")
 	reader.next()
 	for row in reader:
 		desc[row[1]].append(row[1])
 
 for desc_id , text in desc.iteritems():
-	desc[desc_id]="".join(text)
+ desc[desc_id]="".join(text)
+ 	
+print len(desc)
 
+y=0
 corpus=[]
 
-for id , desc in sorted(desc.iteritems()):
-	corpus.append(desc)
- 
+for id , desc in desc.iteritems():
+ #print desc
+ if len(desc)>30 and len(desc)<200:
+  #y=y+1
+  #print len(desc)
+  corpus.append(desc)
+
+#print y
+#print len(corpus)
+#print len(corpus) 
 def analysis(row , ngram , sw , num):
  if ngram==1 and sw==1:
   tfidf_matrix=tf1.fit_transform(corpus)
@@ -55,14 +65,20 @@ def analysis(row , ngram , sw , num):
   feature_names=tf6.get_feature_names()
  
  dense=tfidf_matrix.todense()
+ print dense.shape
+ 
  #text2=tfidf_matrix[row-1].tolist()[0]
  text1=dense[row-1].tolist()[0]
+
+ 
  phrase_scores = [pair for pair in zip(range(0, len(text1)), text1) if pair[1] > 0]
 
- a= sorted(phrase_scores, key=lambda t: t[1] * -1)[:num]	
+
+ a= sorted(phrase_scores, key=lambda t: t[1] * -1)[:num]
+
  
  for i in range(0,num):
 
   print feature_names[a[i][0]]
 
-analysis(1219, 2 , 1 , 10)
+analysis(799, 3 , 1 , 20)
