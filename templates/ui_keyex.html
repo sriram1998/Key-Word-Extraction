@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>KEY WORD EXTRACTION</title>
+<style>
+.code1{
+position:absolute;
+margin-top:100px;
+margin-left: -15%;
+height: 400px;
+width:400px;
+padding: 12px 20px;
+box-sizing: border-box;
+border: 2px solid #ccc;
+border-radius: 4px;
+background-color: #f8f8f8;
+font-size: 16px;
+resize: none;
+}
+.code2
+{
+position:absolute;
+margin-top:100px;
+margin-left: 20%;
+width: 400px;
+height: 400px;
+padding: 12px 20px;
+box-sizing: border-box;
+border: 2px solid #ccc;
+border-radius: 4px;
+background-color: #f8f8f8;
+font-size: 16px;
+resize: none;
+}
+#cus{
+position:absolute;
+margin-top:2%;
+width:400px;
+height:40px;
+padding: 2px 20px;
+box-sizing: border-box;
+border: 2px solid #ccc;
+border-radius: 4px;
+background-color: #f8f8f8;
+font-size: 16px;
+resize: none;
+    
+}
+</style>
+<body>
+<form method="POST" enctype="multipart/form-data">
+<input type="file" id="files" name="files[]" multiple />
+<textarea placeholder="your code here:" name="ccode" class="code1" id="in"></textarea>
+    
+<input type="submit" value="run code">
+<textarea placeholder="output here:" name="output"  class="code2"></textarea>
+</form>
+</body>
+</head>
+</html>

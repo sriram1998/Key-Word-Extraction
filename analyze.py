@@ -27,6 +27,7 @@ with open('csv/filtered/preproctest2fnew.csv',  'r') as sentences_file:
 		desc[row[1]].append(row[1])
 
 for desc_id , text in desc.iteritems():
+ 
  desc[desc_id]="".join(text)
  	
 print len(desc)
@@ -35,15 +36,11 @@ y=0
 corpus=[]
 
 for id , desc in desc.iteritems():
- #print desc
+ 
  if len(desc)>30 and len(desc)<200:
-  #y=y+1
-  #print len(desc)
   corpus.append(desc)
 
-#print y
-#print len(corpus)
-#print len(corpus) 
+ 
 def analysis(row , ngram , sw , num):
  if ngram==1 and sw==1:
   tfidf_matrix=tf1.fit_transform(corpus)
@@ -81,4 +78,4 @@ def analysis(row , ngram , sw , num):
 
   print feature_names[a[i][0]]
 
-analysis(799, 3 , 1 , 20)
+analysis(548, 3 , 1 , 20)
