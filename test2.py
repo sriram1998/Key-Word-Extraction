@@ -89,5 +89,5 @@ desc[3]="".join(text)
 for id,text in desc.iteritems():
  corpus.append(desc[id])
 
-analysis(3 ,3,1 , 10)
+analysis(3 ,3,1 , 20)
 sys.stdout.flush()

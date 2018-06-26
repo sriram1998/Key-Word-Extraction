@@ -14,7 +14,7 @@
 	position:absolute;
 	height:100%;
 	margin-left:3%;
-	margin-top:15%;
+	margin-top:10%;
 	width:40%;
 }
 .containerOutput{
@@ -32,10 +32,10 @@
 	<div class="col s12 m12 offset-s3 valign">
 		<div class="card blue-grey darken-1">
 			
-			<div class="card-content">
+			<div class="card-content white-text">
 			<span class="card-title"></span>
 			<div class="row">
-   			<form class="col s12" action="/script" method="post">
+   			<form class="col s12" action="/script" id="idForm" method="post">
       			<div class="row">
         		<div class="input-field col s12">
           		<textarea id="textarea1" class="materialize-textarea" name="error"></textarea>
@@ -54,10 +54,10 @@
 </div>   
 <div class="containerOutput">
 <div class="row valign-wrapper">
-	<div class="col s12 m12 offset-s3 valign">
-		<div class="card medium blue-grey darken-1">
+	<div class="col s12 m12 offset-s3 valign" style="overflow:scroll; height:400px;">
+		<div class="card large blue-grey darken-1">
 			
-			<div class="card-content">
+			<div class="card-content scrollable white-text">
 			<span class="card-title"></span>
 			<div class="row">
    			
@@ -75,5 +75,23 @@
 </div> 
 
 </body>
-<script type="text/javascript" src="server.js"></script>
+<script>
+$("#idForm").submit(function(e) {
+
+    var url = "/script"; 
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#idForm").serialize(), 
+           success: function(data)
+           {
+               console.log(data);
+               $('#textarea2').html(data);
+           }
+         });
+
+    e.preventDefault();});
+</script>
+
 </html>

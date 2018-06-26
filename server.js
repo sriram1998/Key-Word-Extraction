@@ -21,15 +21,15 @@ app.post('/script' , function(req,res){
 	var pythonProcess=spawn('python' , [scriptPath ,req.body.error]);
 	pythonProcess.stdout.on('data' , (myData) => {
 		returnVar=""+myData;
-		
+
 		console.log(returnVar);
-		
+		res.send(returnVar);
 		
 	});
 	pythonProcess.stderr.on('data' , (myErr) => {
  		console.log("error"+myErr);
 	});
-res.redirect('/');
+
 });
 
 app.listen(3000, function () {
