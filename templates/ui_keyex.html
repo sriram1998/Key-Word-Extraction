@@ -1,0 +1,79 @@
+<html>
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+<title>KEY WORD EXTRACTION</title>
+<style>
+
+.container{
+	
+	position:absolute;
+	height:100%;
+	margin-left:3%;
+	margin-top:15%;
+	width:40%;
+}
+.containerOutput{
+	position:absolute;
+	height:100%;
+	margin-left:50%;
+	margin-top:10%;
+	width:50%;	
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="row valign-wrapper">
+	<div class="col s12 m12 offset-s3 valign">
+		<div class="card blue-grey darken-1">
+			
+			<div class="card-content">
+			<span class="card-title"></span>
+			<div class="row">
+   			<form class="col s12" action="/script" method="post">
+      			<div class="row">
+        		<div class="input-field col s12">
+          		<textarea id="textarea1" class="materialize-textarea" name="error"></textarea>
+          		<label for="textarea1">Enter Error Description</label>
+        		</div>
+      			</div>
+    			<button class="btn waves-effect waves-light" type="submit" name="action">Extract
+        		<i class="material-icons right"></i>
+    			</button>
+    		</form>
+ 			</div>
+ 			</div>
+ 		</div>
+ 	</div>
+</div> 
+</div>   
+<div class="containerOutput">
+<div class="row valign-wrapper">
+	<div class="col s12 m12 offset-s3 valign">
+		<div class="card medium blue-grey darken-1">
+			
+			<div class="card-content">
+			<span class="card-title"></span>
+			<div class="row">
+   			
+      			<div class="row">
+        		<div class="input-field col s12">
+          		<textarea id="textarea2" class="materialize-textarea" name="keyInfo"></textarea>
+          		<label for="textarea1">Extracted Information</label>
+        		</div>
+      			</div>
+    		</div>
+ 			</div>
+ 		</div>
+ 	</div>
+</div> 
+</div> 
+
+</body>
+<script type="text/javascript" src="server.js"></script>
+</html>

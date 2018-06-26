@@ -5,6 +5,7 @@ import collections
 import pandas as pd
 import re
 import string
+import sys
 import unicodedata
 import nltk
 import contractions
@@ -13,6 +14,10 @@ from bs4 import BeautifulSoup
 from nltk import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import LancasterStemmer, WordNetLemmatizer
+script = sys.argv[0]
+
+
+command = sys.argv[1]
 tf1 = TfidfVectorizer(analyzer='word', ngram_range=(0,1), min_df = 0, stop_words = 'english')
 tf2 = TfidfVectorizer(analyzer='word', ngram_range=(0,1), min_df = 0)
 tf3 = TfidfVectorizer(analyzer='word', ngram_range=(2,2), min_df = 0, stop_words = 'english')
@@ -23,6 +28,7 @@ desc=defaultdict(list)
 text="I have an issue in electron version 1.8.7"
 text2="I have an electron app , but the app dosen't kill the python process on quitting."
 text3="I'm running an app on nodejs but it logs out an error saying npm version is not compatible"
+text4=command
 def preprocess(text):
   soup=  BeautifulSoup(text , "html.parser")
   text=soup.get_text()
@@ -74,9 +80,14 @@ text=preprocess(text3)
 desc[2].append(text)
 desc[2]="".join(text)
 
+text=preprocess(text4)
+desc[3].append(text)
+desc[3]="".join(text)
+
 
 
 for id,text in desc.iteritems():
  corpus.append(desc[id])
 
-analysis(2 ,3,1 , 10)
+analysis(3 ,3,1 , 10)
+sys.stdout.flush()
