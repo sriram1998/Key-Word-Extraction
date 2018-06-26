@@ -25,10 +25,8 @@ tf4 = TfidfVectorizer(analyzer='word', ngram_range=(2,2), min_df = 0)
 tf5 = TfidfVectorizer(analyzer='word', ngram_range=(3,3), min_df = 0, stop_words = 'english')
 tf6 = TfidfVectorizer(analyzer='word', ngram_range=(3,3), min_df = 0)
 desc=defaultdict(list)
-text="I have an issue in electron version 1.8.7"
-text2="I have an electron app , but the app dosen't kill the python process on quitting."
-text3="I'm running an app on nodejs but it logs out an error saying npm version is not compatible"
-text4=command
+
+text=command
 def preprocess(text):
   soup=  BeautifulSoup(text , "html.parser")
   text=soup.get_text()
@@ -68,26 +66,16 @@ def analysis(row ,  n , s , num):
  for i in range(0,num):
   print feature_names[a[i][0]]
 
+
+
 text=preprocess(text)
 desc[0].append(text)
 desc[0]="".join(text)
-
-text=preprocess(text2)
-desc[1].append(text)
-desc[1]="".join(text)
-
-text=preprocess(text3)
-desc[2].append(text)
-desc[2]="".join(text)
-
-text=preprocess(text4)
-desc[3].append(text)
-desc[3]="".join(text)
 
 
 
 for id,text in desc.iteritems():
  corpus.append(desc[id])
 
-analysis(3 ,3,1 , 20)
+analysis(0 ,3,1 , 20)
 sys.stdout.flush()
