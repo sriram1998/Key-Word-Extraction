@@ -14,7 +14,7 @@ app.get('/' , function(req,res){
 })
 
 app.post('/script' , function(req,res){
-	const scriptPath='test2.py';
+	const scriptPath='pipeline.py';
 	
 	//console.log(input);
 	
