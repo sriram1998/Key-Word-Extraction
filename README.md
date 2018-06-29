@@ -11,3 +11,5 @@ Dataset used : github issues from kaggle.
 4.)TF-IDF analysis in analyze.py
 
 5.)pipeline.py accepts an user given text and processes it. Run on Node server.
+
+(For now , it just outputs the top 10 tri grams.)
