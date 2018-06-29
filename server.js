@@ -11,6 +11,7 @@ const {spawn}=require('child_process')
 
 app.get('/' , function(req,res){
 	 res.sendFile(path.join(__dirname, '/templates/ui_keyex.html'));
+	 
 })
 
 app.post('/script' , function(req,res){
