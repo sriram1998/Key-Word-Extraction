@@ -26,13 +26,13 @@
 }
 h2{
 	position:absolute;
-	margin-left:28%;
+	margin-left:22%;
 }
 </style>
 </head>
 <body>
 <div class="row">
-<h2>Key Information Extraction</h2>
+<h2>Contextual Information Extraction</h2>
 </div>
 <div class="container">
 <div class="row valign-wrapper">
@@ -58,6 +58,13 @@ h2{
  		</div>
  	</div>
 </div> 
+<div class="row">
+<button onclick="load1()" id="ex1" >Example 1</button>
+<button onclick="load2()" id="ex1" >Example 2</button>
+<button onclick="load3()" id="ex1" >Example 3</button>
+<button onclick="load4()" id="ex1" >Example 4</button>
+<button onclick="load5()" id="ex1" >Example 5</button>
+</div>
 </div>   
 <div class="containerOutput">
 <div class="row valign-wrapper">
@@ -79,10 +86,31 @@ h2{
  		</div>
  	</div>
 </div> 
+
 </div> 
 
 </body>
 <script>
+function load1()
+{$('#textarea1').html("currently the default license is empty our terms of use say that unless otherwise specified the license is cc  ALPHANUM  it would probably be better to set this explicitly by default");
+
+}
+function load2()
+{$('#textarea1').html("if the jack server is restarted while matchmaker is running stdout is flooded with jackclientsocketread time out messages it could try to reconnect to the new jack server");
+
+}
+function load3()
+{$('#textarea1').html("getting this error on a fresh install when using the selectfield assertion failed you modified options twice on  in a single render it was rendered in componentonewayselect and modified in componentonewayselect  this was unreliable and slow in ember 1x and is no longer supported ember  ALPHANUM  emberformfor  ALPHANUM ");
+
+}
+function load4()
+{$('#textarea1').html("build a skeleton android apk branded with the artemis logo that when launched contains the following menu items select game  when tapped a message should pop up stating coming soon select codes  since select game is not yet functional this should be grayed out or otherwise indicated to be disabled and should not respond to tap start hacking  when tapped a message should pop up stating coming soon options  when tapped a message should pop up stating coming soon about  when tapped a message should pop up stating artemis for android a collaborative opensource video game cheat code generation game hacking system visit  URL  for more information");
+
+}
+function load5()
+{$('#textarea1').html("hello i am trying to simulate a hover on the clickable areas of the website so that the user knows what can be clicked i camed up with this function  var blink   mapifypolygon  setinterval function  blinktoggleclass mapifyhover    ALPHANUM    it seems to work well and add the class as intended if i use it on the area but if i use it on the polygon where the hover class needs to be activated it doesnt work anymore how can this be achieved am i targeting the wrong class also is there any that i could simulate the hover effect only or certain areas or maybe set a delay to the blinking like an area would highlight first after  NUMBER  seconds the next and so on  ALPHANUM  pause if theres no action on the website and then it starts again the website address is httpssporedevpleiade thank you");
+
+}
 $("#idForm").submit(function(e) {
 
     var url = "/script"; 
