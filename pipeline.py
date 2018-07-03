@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 from nltk import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import LancasterStemmer, WordNetLemmatizer
+
 script = sys.argv[0]
 
 
@@ -64,7 +65,21 @@ def analysis(row ,  n , s , num):
  phrase_scores = [pair for pair in zip(range(0, len(text1)), text1) if pair[1] > 0]
  a= sorted(phrase_scores, key=lambda t: t[1] * -1)[:num]	
  for i in range(0,num):
-  print feature_names[a[i][0]]
+  tokenized = sent_tokenize(feature_names[a[i][0]])
+  for i in tokenized:
+     
+    # Word tokenizers is used to find the words 
+    # and punctuation in a string
+    wordsList = nltk.word_tokenize(i)
+ 
+    
+ 
+    #  Using a Tagger. Which is part-of-speech 
+    # tagger or POS-tagger. 
+    tagged = nltk.pos_tag(wordsList)
+ 
+    print(tagged)
+  
 
 
 
