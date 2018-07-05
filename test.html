@@ -1,0 +1,21 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/7.0.0/mark.min.js"></script>
+<body>
+  <div class="context">Hyundai Samsung car jeeps jeeep jeep jeep Mercedes-Benz Nike Apple Nissan Scion!</div>
+</body>
+
+<script>
+var brands =   ["car" , "jeeps" , "jeeep" ,"car", "jeep" ,	 "Hyundai" , "Samsung"];
+
+var instance = new Mark(document.querySelector("body"));
+
+instance.mark(brands, {
+    accuracy: "exactly",
+    separateWordSearch: true
+});
+//instance.mark("Mercedes")
+
+</script>
+
+</html>

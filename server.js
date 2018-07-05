@@ -22,8 +22,9 @@ app.post('/script' , function(req,res){
 	var pythonProcess=spawn('python' , [scriptPath ,req.body.error]);
 	pythonProcess.stdout.on('data' , (myData) => {
 		returnVar=""+myData;
-
-		console.log(returnVar);
+		
+		
+		//console.log(returnVar);
 		res.send(returnVar);
 		
 	});

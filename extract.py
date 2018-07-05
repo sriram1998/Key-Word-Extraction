@@ -36,7 +36,7 @@ def check_atl2(t , b):
 def filter_rows(s):
  r=0
  data=[]
- with open('csv/test/github_issues_sampledtest2.csv',  'rb') as f,open('csv/filtered/preproctest2f.csv',  'a') as f_out:
+ with open('csv/test/github_issues_sampledtest.csv',  'rb') as f,open('csv/filtered/filterrows.csv',  'a') as f_out:
   reader = csv.reader(f)
   writer = csv.writer(f_out)
   for row in reader:
