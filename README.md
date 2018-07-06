@@ -1,4 +1,4 @@
-# Extracting key information from error description.
+# Extracting key information from Issue description.
 
 Dataset used : github issues from kaggle.
 
