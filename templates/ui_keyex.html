@@ -3,9 +3,8 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/7.0.0/mark.min.js"></script>
 
 <title>KEY WORD EXTRACTION</title>
 <style>
@@ -29,7 +28,6 @@ h2{
 	position:absolute;
 	margin-left:22%;
 }
-
 </style>
 </head>
 <body>
@@ -93,7 +91,6 @@ h2{
 
 </body>
 <script>
-
 function load1()
 {$('#textarea1').html("currently the default license is empty our terms of use say that unless otherwise specified the license is cc  ALPHANUM  it would probably be better to set this explicitly by default");
 
@@ -128,23 +125,7 @@ $("#idForm").submit(function(e) {
   
                var desc=$("#textarea1").val().split(" ");
                console.log(desc[0]);
-               /*  $("#textarea1").unmark({
-                done: function() {
-                    var options = {
-                        separateWordSearch: false
-                    };
-                     $("#textarea1").mark(desc[0], options)
-}});*/
-               /*var instance = new Mark(document.querySelector("#textarea1"));
-
-instance.mark(desc[2], {
-    accuracy: {
-      value: "exactly",
-      limiters: [".", ",", "!"]
-    }
-});*/
-
-
+               
                $('#textarea2').html(data);
            }
          });

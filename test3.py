@@ -16,22 +16,26 @@ desc[0]="".join(text)
 
 
 for id,text in desc.iteritems():
- print desc[id]
+ #print desc[id]
  corpus.append(desc[id])
- print corpus
+ #print corpus
 
 
 vectorizer = pickle.load(open("feature5.pkl"))
-tfidf_matrix=vectorizer.transform(corpus)
+
+tfidf_matrix=vectorizer.fit_transform(corpus)
+
 feature_names=vectorizer.get_feature_names()
+#print feature_names
 dense=tfidf_matrix.todense()
- 
+print dense.shape	
 text1=dense[0].tolist()[0]
+#print text1
 
 phrase_scores = [pair for pair in zip(range(0, len(text1)), text1) if pair[1] > 0]
 
 
-a= sorted(phrase_scores, key=lambda t: t[1] * -1)[:10]
+a= sorted(phrase_scores, key=lambda t: t[1] * -1)[:200]
 print len(a)
 for i in range(0,len(a)):
 

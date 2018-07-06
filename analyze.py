@@ -90,7 +90,7 @@ def analysis(row , ngram , sw , num):
 
  
  phrase_scores = [pair for pair in zip(range(0, len(text1)), text1) if pair[1] > 0]
-
+  
 
  a= sorted(phrase_scores, key=lambda t: t[1] * -1)[:num]
  print len(a)
