@@ -1,4 +1,4 @@
-# Extracting key information from error description.
+# Extracting key information from Issue description.
 
 Dataset used : github issues from kaggle.
 
@@ -12,4 +12,9 @@ Dataset used : github issues from kaggle.
 
 5.)pipeline.py accepts an user given text and processes it. Run on Node server.
 
-(For now , it just outputs the top 10 tri grams.)
+6.)Run npm install 
+
+7.)start the server by nodemon server.js
+
+
+
