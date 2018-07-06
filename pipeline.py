@@ -66,7 +66,7 @@ def analysis(row ,  n , s , num):
  text1=dense[row].tolist()[0]
  phrase_scores = [pair for pair in zip(range(0, len(text1)), text1) if pair[1] > 0]
  a= sorted(phrase_scores, key=lambda t: t[1] * -1)[:num]	
- for i in range(0,5):
+ for i in range(0,len(a)):
   tokenized = sent_tokenize(feature_names[a[i][0]])
   for j in tokenized:
      
@@ -79,13 +79,14 @@ def analysis(row ,  n , s , num):
  
     tagged = nltk.pos_tag(wordsList)
     # for l in wordsList:
-    #  k=k+1
-    #  if k<3:
-    #   print wordsList[k] 
-    #  else:
-    #   break    
-    print(tagged)
+    #   k=k+1
+    #   if k<3:
+    #    print wordsList[k] 
+    #   else:
+    #    break    
     
+    #print(tagged)
+  print feature_names[a[i][0]]  
   
 
 

@@ -72,8 +72,8 @@ def analysis(row , ngram , sw , num):
   feature_names=tf4.get_feature_names()
   pickle.dump(tf4,open("feature4.pkl","wb"))
  if ngram==3 and sw==1:
-  print ngram
   tfidf_matrix=tf5.fit_transform(corpus)
+  print tfidf_matrix
   feature_names=tf5.get_feature_names()
   pickle.dump(tf5,open("feature5.pkl","wb"))
  if ngram==3 and sw==0:

@@ -6,6 +6,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.es6.js"></script>
 <title>KEY WORD EXTRACTION</title>
 <style>
 
@@ -23,6 +24,13 @@
 	margin-left:50%;
 	margin-top:10%;
 	width:50%;	
+}
+#textarea2 {
+    overflow-y: scroll;
+    
+     height: 400px;
+    max-height: 400px;
+    resize: none;
 }
 h2{
 	position:absolute;
@@ -65,26 +73,32 @@ h2{
 <button onclick="load4()" id="ex1" >Example 4</button>
 <button onclick="load5()" id="ex1" >Example 5</button>
 </div>
+<div class="row">
+<div id="keys" class="col s12 m12 ">
+
+</div>
+</div>
 </div>   
 <div class="containerOutput">
 <div class="row valign-wrapper">
-	<div class="col s12 m12 offset-s3 valign" style="overflow:scroll; height:400px;">
-		<div class="card large blue-grey darken-1">
-			
-			<div class="card-content scrollable white-text">
-			<span class="card-title"></span>
-			<div class="row">
-   			
-      			<div class="row">
-        		<div class="input-field col s12">
-          		<textarea id="textarea2" class="materialize-textarea" name="keyInfo"></textarea>
-          		<label for="textarea1">Extracted Information</label>
-        		</div>
-      			</div>
-    		</div>
- 			</div>
- 		</div>
- 	</div>
+
+  <div class="col s12 m12 offset-s3 valign">
+    <div class="card large blue-grey darken-1 ">
+      
+      <div class="card-content white-text">
+      <span class="card-title"></span>
+      <div class="row">
+        
+            <div class="row">
+            <div class="input-field col s12 ">
+              <textarea id="textarea2" class="materialize-textarea" name="keyInfo"></textarea>
+              <label for="textarea1">Extracted Information</label>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div> 
 
 </div> 
@@ -121,12 +135,33 @@ $("#idForm").submit(function(e) {
            data: $("#idForm").serialize(), 
            success: function(data)
            {   var words=data.split("\n");
-               console.log(words[0]);
-  
+
+               
+               console.log(words[0].split(" ")[0]);
+              // var keys =   [words[0].split(" ")[0] , words[1].split(" ")[0] , words[2].split(" ")[0]];     
+               var highlight=[];
                var desc=$("#textarea1").val().split(" ");
                console.log(desc[0]);
+               for(var k=0;k<10;k++)
+               {
+                highlight.push(words[k].split(" ")[0]);
+                
+
                
+                   }
+               
+                
+
+           
                $('#textarea2').html(data);
+               $('#keys').html(data);
+                    var instance = new Mark(document.querySelector("#keys"));
+                instance.mark(highlight  , {
+                            accuracy:"exactly",
+                            style: "background-color:red;color:#fff;",
+                            separateWordSearch:true
+                                      });
+
            }
          });
 

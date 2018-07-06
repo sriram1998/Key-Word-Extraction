@@ -7,8 +7,8 @@ import cPickle as pickle
 
 desc=defaultdict(list)
 corpus=[]
-text="hi! thanks for putting this up for us all to use! i've got ardufocus on a arduino nano. from the standalone moonlight focusing software everything works. i can also control it as expected from putty to my com port. however, sgp won't connect to the device. when i click connect on the moonlight dro driver, the configuration window pops up, but show's no controllers. when i sniff on the serial port, i see that the ardufocus is sent :gh :2gh and then doesn't respond. i get :gh being sent, but i don't understand :2gh . when i do :gh manually from putty ardufocus responds correctly. any thoughts?"
-
+#text="i have interest from cern about sayma board. they want to use it as general purpose amc carrier with plenty of q sfp channels. so the idea is to build rtm with sfp cages. initial plan is to use 4x sfp + 3x qsfp to utilise all 16 gigabit channels. there are easily available qsfp to sfp+ copper cables ideal for low distance connections. 4 sfp cages let us use low cost wdm transceivers for drtio longer distance connections. so the question is - would such board be attractive for artiq users? exisitin project of 8 channel rtm sfp carrier could be adopted easily."
+text="hello. all newest ip-camera used rtsp video without mjpeg . how use rtsp webcam for octoprint?"
 
 desc[0].append(text)
 desc[0]="".join(text)
@@ -16,19 +16,19 @@ desc[0]="".join(text)
 
 
 for id,text in desc.iteritems():
- #print desc[id]
+ 
  corpus.append(desc[id])
- #print corpus
+ 
 
 
 vectorizer = pickle.load(open("feature5.pkl"))
 
 tfidf_matrix=vectorizer.fit_transform(corpus)
-
+print tfidf_matrix
 feature_names=vectorizer.get_feature_names()
 #print feature_names
 dense=tfidf_matrix.todense()
-print dense.shape	
+print dense
 text1=dense[0].tolist()[0]
 #print text1
 
