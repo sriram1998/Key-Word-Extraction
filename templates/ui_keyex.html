@@ -106,23 +106,23 @@ h2{
 </body>
 <script>
 function load1()
-{$('#textarea1').html("currently the default license is empty our terms of use say that unless otherwise specified the license is cc  ALPHANUM  it would probably be better to set this explicitly by default");
+{$('#textarea1').html("i have interest from cern about sayma board. they want to use it as general purpose amc carrier with plenty of q sfp channels. so the idea is to build rtm with sfp cages. initial plan is to use 4x sfp + 3x qsfp to utilise all 16 gigabit channels. there are easily available qsfp to sfp+ copper cables ideal for low distance connections. 4 sfp cages let us use low cost wdm transceivers for drtio longer distance connections. so the question is - would such board be attractive for artiq users? exisitin project of 8 channel rtm sfp carrier could be adopted easily.");
 
 }
 function load2()
-{$('#textarea1').html("if the jack server is restarted while matchmaker is running stdout is flooded with jackclientsocketread time out messages it could try to reconnect to the new jack server");
+{$('#textarea1').html("expected behavior basic examples should work as specified. i don't know whether it's because robotjs or pm2 issue. current behavior by running robotjs under pm2 looks fine no errors but the examples don't performe as expected. as an example, trying to log getmousepos under pm2 gives { x: 0, y: 0 } no matter the real mouse position running the same with node works as expected . steps to reproduce for bugs just run the official given example under pm2 start index.js instead using node. your environment robotjs version: 0.4.5 node.js version: 4.1.0 npm version: 2.14.3 operating system: mac os x 10.10.5");
 
 }
 function load3()
-{$('#textarea1').html("getting this error on a fresh install when using the selectfield assertion failed you modified options twice on  in a single render it was rendered in componentonewayselect and modified in componentonewayselect  this was unreliable and slow in ember 1x and is no longer supported ember  ALPHANUM  emberformfor  ALPHANUM ");
+{$('#textarea1').html("i connect via ssh to my server. if i start mc midnightcommander , i'm able to use the right-mouse-bottom to mark files. in pac, right-mouse button open contextmenu for pac. how can i change this behavior to have right-click at ssh? ");
 
 }
 function load4()
-{$('#textarea1').html("build a skeleton android apk branded with the artemis logo that when launched contains the following menu items select game  when tapped a message should pop up stating coming soon select codes  since select game is not yet functional this should be grayed out or otherwise indicated to be disabled and should not respond to tap start hacking  when tapped a message should pop up stating coming soon options  when tapped a message should pop up stating coming soon about  when tapped a message should pop up stating artemis for android a collaborative opensource video game cheat code generation game hacking system visit  URL  for more information");
+{$('#textarea1').html("i´ve installed the server, made all the important settings, then clicked on start server and nothing happens. i had csgosl running before, then after a reset at my server i reinstalled it today and i cant figure out where the problem is. i´ve also checked the wiki but no indication what i might have missed.");
 
 }
 function load5()
-{$('#textarea1').html("hello i am trying to simulate a hover on the clickable areas of the website so that the user knows what can be clicked i camed up with this function  var blink   mapifypolygon  setinterval function  blinktoggleclass mapifyhover    ALPHANUM    it seems to work well and add the class as intended if i use it on the area but if i use it on the polygon where the hover class needs to be activated it doesnt work anymore how can this be achieved am i targeting the wrong class also is there any that i could simulate the hover effect only or certain areas or maybe set a delay to the blinking like an area would highlight first after  NUMBER  seconds the next and so on  ALPHANUM  pause if theres no action on the website and then it starts again the website address is httpssporedevpleiade thank you");
+{$('#textarea1').html("as an admin, i would like to select the time period for which to view the statistics acceptance criteria verify that admin will select the date from which to generate the report verify that admin will select the date till which the report is to be generated verify that the end date is after the start date verify that the end date cannot be from a time in the future verify that the from date is from the time the app has been active verify that selecting a time period is mandatory");
 
 }
 $("#idForm").submit(function(e) {
@@ -142,9 +142,9 @@ $("#idForm").submit(function(e) {
                var highlight=[];
                var desc=$("#textarea1").val().split(" ");
                console.log(desc[0]);
-               for(var k=0;k<10;k++)
-               {
-                highlight.push(words[k].split(" ")[0]);
+               for(var k=0;k<8;k++)
+               {for(var j=0;j<3;j++)
+                highlight.push(words[k].split(" ")[j]);
                 
 
                

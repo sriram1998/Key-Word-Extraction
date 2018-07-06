@@ -15,9 +15,14 @@ Dataset used : github issues from kaggle.
 
 
 # Run the App
-6.)Run npm install 
+1.)Run npm install 
 
-7.)start the server by nodemon server.js
+2.)Run pip install requirements.txt to install python dependencies.
+
+3.)Run npm install express
+
+4.)start the server by nodemon server.js
+
 
 
 
@@ -25,21 +30,6 @@ Dataset used : github issues from kaggle.
 npm version:6.1.0
 node version: 10.5.0
 
-#Python dependencies:
-import csv
-import sklearn , version : 0.19.1
-from sklearn.feature_extraction.text import TfidfVectorizer
-import collections
-import pandas as pd
-import re
-import string
-import sys
-import unicodedata
-import nltk  , version:3.3
-import cPickle as pickle
-import contractions
-import inflect
-from bs4 import BeautifulSoup
 
 
 

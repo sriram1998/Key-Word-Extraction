@@ -1,0 +1,8 @@
+numpy==1.14.3
+nltk==3.3
+tqdm==4.23.4
+pandas==0.23.0
+inflect==0.3.1
+contractions==0.0.13
+beautifulsoup4==4.6.0
+scikit_learn==0.19.1
